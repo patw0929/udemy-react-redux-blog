@@ -9,7 +9,7 @@ import PostShow from './components/post_show';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={PostsIndex} />
-    <Route path="posts/:id" component={PostShow} />
     <Route path="posts/new" component={PostsNew} />
+    <Route path="posts/:id" component={PostShow} />
   </Route>
 );
