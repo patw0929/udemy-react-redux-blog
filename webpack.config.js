@@ -1,3 +1,5 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: [
     './src/index.js'
@@ -9,6 +11,7 @@ module.exports = {
   },
   module: {
     loaders: [{
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
@@ -19,6 +22,13 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template : './index.html',
+      inject   : false,
+      outputPath: '/',
+    }),
+  ],
   devServer: {
     historyApiFallback: true,
     contentBase: './'
