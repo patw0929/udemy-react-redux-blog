@@ -12,6 +12,13 @@ class PostsNew extends Component {
     router: PropTypes.object,
   };
 
+  onSubmit(props) { // props from form (they are fields!)
+    this.props.createPost(props) // is a promise!
+      .then(() => {
+        this.context.router.push('/');
+      });
+  }
+
   render() {
     const {
       fields: {
@@ -23,7 +30,7 @@ class PostsNew extends Component {
     } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.props.createPost)}>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create a new post</h3>
 
         <div className={`form-group ${title.touched && title.invalid ? 'has-danger' : ''}`}>
