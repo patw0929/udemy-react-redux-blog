@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchPosts } from '../actions/index';
 
-export default class PostsIndex extends React.Component {
+class PostsIndex extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.props.fetchPosts();
   }
 
   render() {
@@ -13,3 +20,11 @@ export default class PostsIndex extends React.Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    fetchPosts,
+  }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(PostsIndex);
