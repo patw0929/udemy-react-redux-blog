@@ -4,8 +4,13 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        React simple starter
-        {this.props.children}
+        <header>
+          <h1>React Redux Blog App</h1>
+        </header>
+
+        <main>
+          {this.props.children}
+        </main>
       </div>
     );
   }
