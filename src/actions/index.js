@@ -14,6 +14,17 @@ export function fetchPosts() {
   };
 }
 
+export const READ_POST = 'READ_POST';
+
+export function readPost(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}?key=${API_KEY}`);
+
+  return {
+    type: READ_POST,
+    payload: request,
+  };
+}
+
 export const CREATE_POST = 'CREATE_POST';
 
 export function createPost(props) {
